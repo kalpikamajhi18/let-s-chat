@@ -11,11 +11,32 @@ const Signup = () => {
       cpass :" "
     })
     let handleChange=(event)=>{
-       setSignup(...signup, {[event.target.name] : event.target.value})
+       setSignup({...signup, [event.target.name] : event.target.value})
     }
 
     let handlesignup = async()=>{
-      toast.success("Ready to Implement")
+      
+      let newdata = {
+             "name":signup.uname, 
+              "email":signup.uemail, 
+               "password":signup.pass,
+                "phone":signup.umobile 
+      }
+      let url = "https://api.skillsvarz.com/api/users"
+
+      let resp = await fetch(url,{
+        method:"POST",
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(newdata)
+      })
+      console.log(resp)
+      let res = await resp.json()
+      console.log(res)
+
+      resp.status===200 || resp.status===201 ? toast.success("Registration successfull") :  toast.error("Try again")
+      
     }
   return (
    

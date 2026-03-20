@@ -4,6 +4,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UserOutlet from "./components/UserOutlet";
 import UserDashboard from "./components/UserDashboard";
+import Chatscreen from "./components/Chatscreen";
+import Profile from "./Pages/Profile";
 
 const router = createBrowserRouter([
     {
@@ -16,11 +18,14 @@ const router = createBrowserRouter([
               {path:"signup", element:<Signup/>}
         ]
     },
+    
     {
         path:"/user",
         element:<UserOutlet/>,
         children:[
             {index:true, element:<UserDashboard/>},
+             {path:"chat", element:<Chatscreen/>},
+             {path:"profile", element:<Profile/>},
             {path:"setting", element:<>setting page</>}
         ]
     }

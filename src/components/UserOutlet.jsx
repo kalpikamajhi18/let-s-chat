@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import Sidebar from './Sidebar'
 
 const UserOutlet = () => {
     let user_id = JSON.parse(localStorage.getItem("user_id"))
@@ -17,7 +18,8 @@ const UserOutlet = () => {
         api()
     }, [user_id])
     return (
-        <div>
+        <div className='h-screen w-full flex'>
+            <Sidebar user = {user} />
             <Outlet context={{ user }} />
         </div>
     )

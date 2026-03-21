@@ -80,7 +80,7 @@ const [isenable, setIsenable] = useState(true)
                         <MessageCircleCheck /> <span>My Chats</span>
                     </button>
 
-                    <button className='flex gap-2 my-2 border w-full p-2 rounded-sm'>
+                    <button onClick={()=>{redirect("/user/resetpassword")}} className='flex gap-2 my-2 border w-full p-2 rounded-sm'>
                         <Settings /> <span>Setting</span>
                     </button>
                     <button onClick={() => { redirect("/user/profile") }} className='flex gap-2 my-2 border w-full p-2 rounded-sm'>

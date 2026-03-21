@@ -20,11 +20,11 @@ const Signup = () => {
              "name":signup.uname, 
               "email":signup.uemail, 
                "password":signup.pass,
-                "phone":signup.umobile 
+                "phone":signup.umobile   
       }
       let url = "https://api.skillsvarz.com/api/users"
 
-      let resp = await fetch(url,{
+      let resp = await fetch(url,{        
         method:"POST",
         headers:{
           'Content-Type':'application/json'
@@ -35,7 +35,13 @@ const Signup = () => {
       let res = await resp.json()
       console.log(res)
 
-      resp.status===200 || resp.status===201 ? toast.success("Registration successfull") :  toast.error("Try again")
+      if(resp.status===200 || resp.status===201)
+       {
+         toast.success("Registration successfull")
+
+       }   
+       else
+         {  toast.error("Try again")}
       
     }
   return (

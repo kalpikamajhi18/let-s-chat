@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, redirect, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { LuEyeClosed } from "react-icons/lu";
 
 const Login = () => {
 
@@ -71,7 +72,9 @@ return (
           className="w-full mt-1 p-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(event) => {
             setLogin({ ...login, username: event.target.value });
+           
           }}
+          
         />
       </div>
 
@@ -83,11 +86,12 @@ return (
         <input
           type="password"
           id="password"
-          placeholder="Enter your password..."
+          placeholder="Enter your password...  "
           className="w-full mt-1 p-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(event) => {
             setLogin({ ...login, password: event.target.value });
           }}
+         
         />
       </div>
 
@@ -98,7 +102,7 @@ return (
       >
         Login
       </button>
-
+     
       {/* Divider */}
       <div className="flex items-center my-4">
         <hr className="flex-grow border-gray-700" />

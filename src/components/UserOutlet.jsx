@@ -7,6 +7,8 @@ const UserOutlet = () => {
     let user_id = JSON.parse(localStorage.getItem("user_id"))
 
     const [user, setUser] = useState({})
+     const [chatId, setChatId] = useState("")
+    const [friendName, setFriendName] = useState("")
 
     useEffect(() => {
 
@@ -20,8 +22,8 @@ const UserOutlet = () => {
     }, [user_id])
     return (
         <div className='h-screen w-full flex'>
-            <Sidebar user={user} />
-            <Outlet context={{ user }} />
+            <Sidebar user={user} setFriendName={setFriendName} chatId={chatId} setChatId={setChatId} />
+            <Outlet context={{user , chatId, setChatId, friendName  }} />
             <ToastContainer
                 position="top-right"
                 autoClose={5000}

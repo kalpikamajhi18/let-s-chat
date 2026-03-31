@@ -1,15 +1,27 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const RecentChatBox = ({ name , email, newchat, id}) => {
+const RecentChatBox = ({ name , email, newchat, id, setChatId, setFriendName, value }) => {
 
     let redirect = useNavigate()
 
     return (
         <div 
-            onClick={() => { redirect('/user/chat') 
-                newchat(id)
-            }} 
+            onClick={ async ()=>{
+                redirect('/user/chat')
+                setFriendName(name)
+               if(newchat){
+                let chatid = await newchat(id)
+                setChatId(chatid)
+                
+                
+               }
+               else{
+                setChatId(value._id)
+               }
+            }  
+                // newchat(id)
+            } 
             className="flex items-center gap-3 p-2  rounded-xl cursor-pointer hover:bg-white/10 transition-all duration-200"
         >
 

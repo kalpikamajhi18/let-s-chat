@@ -4,7 +4,7 @@ import { FiSettings } from "react-icons/fi";
 import { LogOutIcon, MessageCircleCheck, Settings, User2Icon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const Sidebar = ({ user }) => {
+const Sidebar = ({ user, setFriendName, chatId, setChatId}) => {
   const navigate = useNavigate()
   const [isenable, setIsenable] = useState(true)
   const [search, setSearch] = useState([])
@@ -55,7 +55,8 @@ const Sidebar = ({ user }) => {
 
     })
     let res = await resp.json()
-    console.log(res)
+    // console.log(res)
+    return res._id
   }
 
   return (
@@ -64,7 +65,7 @@ const Sidebar = ({ user }) => {
 
 
         // ================= CHAT VIEW =================
-        <div className="h-screen w-[20%] min-w-[260px] bg-[#5E2D3F] text-white flex flex-col justify-between">
+        <div className="h-screen w-[27%] min-w-[260px] bg-[#5E2D3F] text-white flex flex-col justify-between">
 
           {/* Top */}
           <div className="p-4">
@@ -85,13 +86,13 @@ const Sidebar = ({ user }) => {
 
             {/* <h2 className="text-gray-300 text-sm px-2 mb-2">Recent Chats</h2> */}
 
-            <div className="space-y-2 overflow-y-auto max-h-[70vh] pr-1">
+            <div className="space-y-2 overflow-y-auto max-h-[80vh] pr-1">
 
               {/* 🔁 Dynamic search results (optional) */}
               {inputSearch ? <>
                 <h2 className="text-gray-400 text-sm px-2 mb-2">Search results...</h2>
                 {search.length>0? search.map((item, index) => (
-                <Recentchatbox key={index} name={item.name} email={item.email} id={item._id} newchat={newchat} />
+                <Recentchatbox key={index} name={item.name} email={item.email} id={item._id} newchat={newchat} setChatId={setChatId} setFriendName={setFriendName}/>
                 ))
                : (
                 <span>No Recent Chats..</span>
@@ -105,7 +106,7 @@ const Sidebar = ({ user }) => {
                         return u._id!==user._id
 
                       })
-                      return <Recentchatbox key={index} name={newuser.name} email={newuser.email} />
+                      return <Recentchatbox key={index} name={newuser.name} email={newuser.email} setChatId={setChatId} setFriendName={setFriendName} value={val} />
                 })
                 }
                 </>

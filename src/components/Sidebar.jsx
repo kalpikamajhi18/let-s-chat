@@ -86,7 +86,7 @@ const Sidebar = ({ user, setFriendName, chatId, setChatId}) => {
 
             {/* <h2 className="text-gray-300 text-sm px-2 mb-2">Recent Chats</h2> */}
 
-            <div className="space-y-2 overflow-y-auto max-h-[80vh] pr-1">
+            <div className="space-y-2 overflow-y-auto max-h-[75vh] pr-1">
 
               {/* 🔁 Dynamic search results (optional) */}
               {inputSearch ? <>
